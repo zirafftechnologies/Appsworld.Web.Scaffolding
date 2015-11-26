@@ -1,0 +1,212 @@
+﻿<!doctype html>
+<html class="no-js" data-ng-app="appsworld">
+<head>
+    <meta charset="utf-8">
+    <title update-title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.css" />
+    <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.min.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+    <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css" />
+    <link rel="stylesheet" href="bower_components/chosen/chosen.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" href="bower_components/ngImgCrop/compile/minified/ng-img-crop.css" />
+    <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+    <link rel="stylesheet" href="bower_components/ng-table/ng-table.css" />
+    <link rel="stylesheet" href="bower_components/morrisjs/morris.css" />
+    <link rel="stylesheet" href="bower_components/rickshaw/rickshaw.min.css" />
+    <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css" />
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
+    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <link href="content/styles/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="content/styles/kendo/kendo.common-material.min.css" rel="stylesheet" />
+    <link href="content/styles/kendo/kendo.rtl.min.css" rel="stylesheet" />
+    <link href="content/styles/kendo/kendo.material.min.css" rel="stylesheet" />
+    <link href="content/styles/kendo/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="content/styles/kendo/kendo.dataviz.material.min.css" rel="stylesheet" />
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <!-- <link rel="stylesheet" href="styles/main.css"> -->
+    <link href="//cdn.muicss.com/mui-0.0.5/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="content/styles/mainnew.css">
+    <link rel="stylesheet" href="content/styles/custommain.css">
+    <!-- endbuild -->
+    
+    <!-- End POC CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+</head>
+<body>
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Application content -->
+    <div ui-view autoscroll="false"></div>
+
+    <!-- Page Loader -->
+    <!--<div id="pageloader" page-loader></div>-->
+
+
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="http://www.innovit.co/bower_components/es5-shim/es5-shim.js"></script>
+    <script src="http://www.innovit.co/bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-fontawesome/dist/angular-fontawesome.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jquery.slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="bower_components/jquery.sparkline/index.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/momentjs/moment.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="bower_components/ng-bs-daterangepicker/src/ng-bs-daterangepicker.js"></script>
+    <script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+    <script src="bower_components/angular-fullscreen/src/angular-fullscreen.js"></script>
+    <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+    <script src="bower_components/html.sortable/dist/html.sortable.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script>
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="bower_components/chosen/chosen.jquery.min.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+    <script src="bower_components/angular-file-upload/angular-file-upload.min.js"></script>
+    <script src="bower_components/ngImgCrop/compile/minified/ng-img-crop.js"></script>
+    <script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.min.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.min.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/ng-table/ng-table.js"></script>
+    <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+    <script src="bower_components/raphael/raphael.js"></script>
+    <script src="bower_components/mocha/mocha.js"></script>
+    <script src="bower_components/morrisjs/morris.js"></script>
+    <script src="bower_components/flot/jquery.flot.js"></script>
+    <script src="bower_components/flot/jquery.flot.resize.js"></script>
+    <script src="bower_components/flot.tooltip/js/jquery.flot.tooltip.js"></script>
+    <script src="bower_components/angular-flot/angular-flot.js"></script>
+    <script src="bower_components/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/rickshaw/rickshaw.js"></script>
+    <script src="bower_components/angular-rickshaw/rickshaw.js"></script>
+    <script src="bower_components/owl-carousel/owl-carousel/owl.carousel.min.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/fullcalendar/fullcalendar.js"></script>
+    <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script src="bower_components/jquery.easy-pie-chart/dist/angular.easypiechart.min.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <script src="bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.min.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/api-check/dist/api-check.js"></script>
+    <script src="bower_components/angular-formly/dist/formly.js"></script>
+    <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/app.js -->
+
+    <script src="content/scripts/vendor/pluralize/pluralize.js"></script>
+    <script src="//cdn.jsdelivr.net/is.js/0.52/is.min.js"></script>
+    <script src="common/bootstrap/bootstrap.dialog.js"></script>
+    <script src="common/custommodules/Z_Validations.js"></script>
+    <script src="content/scripts/common/auth/oidc-token-manager.js"></script>
+    <script src="content/scripts/common/auth/auth.js"></script>
+    <script src="content/scripts/kendo.all.min.js"></script>
+    <script src="content/scripts/app.js"></script>
+    <script src="common/defaultValues.js"></script>
+    <script src="common/countries.js"></script>
+    
+
+    <!--Custom Modules-->
+    <script src="common/datetimepicker/ui-bootstrap.tpls.js"></script>
+    <script src="common/datetimepicker/datetime-picker.js"></script> 
+    <script src="customDirectives/addressBook/addressBookDataContext.js"></script>
+    <script src="content/scripts/customdirectives/zLoader.js"></script>
+    <script src="content/scripts/customdirectives/zBookMark.js"></script>
+    <script src="customDirectives/addressBook/communication.js"></script>
+    <script src="customDirectives/addressBook/addressGrid.js"></script>
+    <script src="customDirectives/addressBook/addressModel.js"></script>
+    <!-- Custom JS Files -->
+    <script src="content/scripts/config.js"></script>
+    <script src="common/custommodules/gridColumns.js"></script>
+    <script src="content/scripts/common/services/authService.js"></script>
+    <script src="content/scripts/common/services/serviceConfig.js"></script>   
+    <script src="content/scripts/common/services/commonService.js"></script>
+    <script src="content/scripts/common/services/genericFilters.js"></script>
+    <script src="content/scripts/customdirectives/zAddressBook.js"></script>
+    <script src="content/scripts/common/controllers/header.js"></script>
+    <script src="content/scripts/common/controllers/header1.js"></script>
+    <script src="content/scripts/common/controllers/dashboard.js"></script>
+    <script src="content/scripts/customdirectives/validations.js"></script>
+    <script src="views/routemediator/routeMediate.js"></script>
+      
+    <!--Company Setup-->
+    <script src="bean/companies/companyContext.js"></script>
+    <!--<script src="bean/companies/companyContext.js"></script>-->
+    <script src="bean/companies/companies.js"></script>
+    <script src="bean/companies/company.js"></script>
+
+    
+    <!-- Control Codes -->
+    <script src="admin/controlCodes/controlCodesFactory.js"></script>
+    <script src="admin/controlCodes/controlCodesController.js"></script>
+    <script src="admin/controlCodes/controlCode.js"></script>
+    <script src="customDirectives/addressBook/addressConfig.js"></script>
+    
+   <!-- endbuild -->
+</body>
+</html>

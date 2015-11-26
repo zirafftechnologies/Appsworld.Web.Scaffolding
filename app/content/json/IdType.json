@@ -1,0 +1,43 @@
+[{
+  "className": "row",
+  "fieldGroup": [{
+    "className": "col-md-6 col-sm-6 col-xs-12 pl-0 pr-0 mt-15",
+    "type": "k-input",
+    "key": "Name",
+    "id": "Name",
+    "name": "Name",
+    "templateOptions": {
+      "type": "text",
+      "label": "Name",
+      "required": true,
+      "placeholder": "Name",
+      "description": "",
+      "options": []
+    },
+    "expressionProperties": {},
+    "validators": {},
+    "validation": {
+      "messages": {}
+    }
+  }]
+}, {
+  "className": "col-md-12 col-sm-12 col-xs-12 pl-0 pr-0",
+  "type": "k-textarea",
+  "key": "Remarks",
+  "id":"Remarks",
+  "name":"Remarks",
+  "templateOptions": {
+    "type": "textarea",
+    "label": "Remarks",
+    "required": false,
+    "rows": 4,
+    "placeholder": "",
+    "description": "",
+    "options": []
+  },
+  "expressionProperties": {},
+  "validators": {},
+  "validation": {
+    "messages": {}
+  }
+}]

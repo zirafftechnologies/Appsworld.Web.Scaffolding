@@ -1,0 +1,80 @@
+﻿<section class="container-liquid" data-ng-controller="controlCodesController as vm">
+    <section class="row clearfix">
+        <section class="col-md-12 column">
+            <section class="col-xs-12 col-sm-12 col-md-9 pt-20" id="leftsidebar">
+                <section class="tile" fullscreen="isFullscreen02">
+                    <div z-loader></div>
+                    <div class="tile-header dvd dvd-btm pt-0 pb-0 mtm-5" id="acc-icon">
+                        <h2 class="custom-font concode">
+                            <!--<img src="../content/images/iconsnew/5.png" style="width:48px;height:36px;" alt="Control Codes" />-->
+                            <span class="ccode"></span>Control Codes
+                            <label>
+                                <z-bookmark entityname="'Control Codes'"></z-bookmark>
+                            </label>
+                        </h2>
+                        <ul class="controls hidden-xs hidden-sm" style="margin-top: 20px !important;">
+                            <li class="mtm-2">
+                                <div class="row">
+                                    <div class="col-md-6 mt-10">Module:</div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12 pull-right pl-0">
+                                        <select k-data-text-field="'Name'"
+                                                k-data-value-field="'Id'"
+                                                k-data-source=" vm.modules"
+                                                class="pull-right" id="modulename" ng-model="vm.moduleId" k-on-change="vm.modulefun()" kendo-drop-down-list></select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a ng-click="vm.onClick()" tile-control tooltip-placement="top" tooltip="Clear Filters"><i class="fa fa-filter"></i></a></li>
+                            <li><a tile-control tooltip-placement="top" id="editb" tooltip="Edit" class="" ng-click="vm.editControlCode()"><i class="fa fa-pencil "></i></a></li>
+                            <li>
+                                <a href tile-control ng-click="vm.refresh()" tooltip-placement="top" tooltip="Refresh">
+                                    <i class="fa fa-refresh"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+
+
+                        <ul class="controls visible-xs visible-sm">
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+                                <a href dropdown-toggle class="dropdown-toggle settings">&bull;&bull;&bull;</a>
+                                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                    <li ng-click="$event.stopPropagation();">
+                                        <div class="row">
+                                            <div class="col-md-6"></div>
+                                            <div class="form-group col-md-12 col-sm-12 col-xs-12 pull-right pl-0 pr-0">
+                                                <select k-data-text-field="'Name'"
+                                                        k-data-value-field="'Id'"
+                                                        k-data-source=" vm.modules"
+                                                        class="pull-right w100p" id="modulename" ng-model="vm.moduleId" k-on-change="vm.modulefun()" kendo-drop-down-list></select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li><a ng-click="vm.onClick()" tile-control><i class="fa fa-filter"></i>Clear Filters</a></li>
+                                    <li class=""><a href="" ng-click="vm.editControlCode()"><i class="fa fa-pencil "></i>Edit</a></li>
+                                    <li><a ng-click="vm.refresh()"><i class="fa fa-refresh"></i>Refresh</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <br />
+
+
+                    <div class="row taxcodes pt-15">
+                        <div kendo-grid="vm.grid" id="grid" options="vm.options"></div>
+                    </div>
+
+
+
+                </section>
+            </section>
+
+
+        <aside class="col-md-3 col-xs-12 col-sm-12 pl-0 pr-0 widgets pull-right">
+                <z-admincursor></z-admincursor>
+          </aside>
+        </section>
+    </section>
+
+</section>

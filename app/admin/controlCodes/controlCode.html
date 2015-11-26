@@ -1,0 +1,316 @@
+﻿<section class="container-liquid" ng-controller="controlcode as vm">
+
+    <section class="row clearfix controlcode">
+        <section class="col-md-12 column">
+            <section class="col-xs-12 col-sm-12 col-md-9" id="leftsidebar">
+                <section class="tile" fullscreen="isFullscreen02">
+
+                    <div class="acc-form ">
+                        <form name="form1" id="form1" kendo-validator="vm.validator" ng-submit="validate($event)" class="k-content row" role="form">
+
+
+
+                            <div class="tile-header dvd dvd-btm pt-0">
+                                <h2 class="custom-font">
+                                    <!--<img src="../../content/images/iconsnew/5.png" style="width:48px;height:36px;" alt="Control Codes" />-->
+                                    <span class="ccode"></span>Code Category
+                                </h2>
+                            </div>
+                            <div class="col-md-12" ng-show="vm.errorcampaign">
+                                <div class="alert alert-danger alert-dismissable">
+
+                                    <i class="fa fa-exclamation-circle"></i>&nbsp;{{vm.dataerror}}
+                                    <span style="padding-right:80px"></span>
+
+                                </div>
+                            </div>
+
+
+                            <div class="mt-15">
+                                <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="box-col">
+                                        <label>Category</label>
+                                        <input type="text" name="Category" class="k-textbox w100p mand" placeholder="Category" ng-minlength="1" maxlength="20" ng-model="vm.controlCodeCategory.ControlCodeCategoryCode" readonly />
+                                    </div>
+                                </div>
+
+
+                                <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="box-col">
+                                        <label>Description</label>
+                                        <input type="text" name="Description" class="k-textbox w100p mand" placeholder="Description" ng-minlength="1" maxlength="100" ng-model="vm.controlCodeCategory.ControlCodeCategoryDescription" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <br />
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <label for="Type">Default Value</label><br />
+                                    <select k-data-text-field="'CodeKey'"
+                                            k-data-value-field="'CodeValue'"
+                                            k-option-label="'Select Option'"
+                                            k-data-source="vm.controlCodeList1"
+                                            name="Default value" id="defaultvalue" kendo-drop-down-list class="w100p  top-25p" ng-model="vm.controlCodeCategory.DefaultValue"></select>
+                                    <!--<span class="k-invalid-msg" data-for="Default value"></span>-->
+                                </div>
+                                <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="box-col">
+                                        <label>Modulenames</label>
+                                        <input class="k-textbox w100p" ng-model="vm.moduleName" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </form>
+
+                    </div>
+
+                    <!--<div class="hide">
+                        <div class="tile-header dvd dvd-btm">
+                            <h2 class="custom-font">Cursors Offering</h2>
+                        </div>
+                        <br />
+                        <div class="container5">
+                            <br />
+                            <div class="demo-section k-content col-md-6 " ng-repeat="row in vm.modules">
+                                <label class="checkbox checkbox-custom-alt col-md-5">
+                                    <input type="checkbox" id="{{row.Name}}" name="fc5" ng-checked="vm.curserSelection.indexOf(row.Name) > -1" ng-disabled="row.Name=='Admin Cursor'" ng-click="vm.cursertoggleSelection(row.Name)" /><i></i> {{row.Name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>-->
+
+
+
+
+
+
+
+
+
+
+                    <div ng-show="vm.showControlCodeForm" class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="backgroundeffect">
+                            <form name="form1" id="form1" runat="server" kendo-validator="validator" k-options="validationOptions" ng-submit="validate($event)" class="col-md-12 k-content row form-validation" role="form">
+
+                                <div class="modal-header">
+                                    <h3 class="custom-font">Control Code</h3>
+                                </div>
+                                <div class="alert alert-danger alert-dismissable col-md-12" ng-show="vm.errorcampaign1">
+                                    <i class="fa fa-exclamation-circle"></i>&nbsp;{{vm.dataerror1}}
+                                    <span style="padding-right:80px"></span>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="demo-section k-content col-md-6 col-sm-6 col-xs-12 pl-0 ">
+                                            <div class="box-col">
+                                                <label>Field</label>
+                                                <input type="text" name="Field" id="filedid" class="k-textbox w100p mand" ng-model="vm.childCodeValue" placeholder=" Field" ng-minlength="1" maxlength="100" />
+                                            </div>
+                                        </div>
+
+                                        <!--<div ng-show="vm.showvalueDiv1" class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                            <div class="box-col">
+                                                <label>Field</label>
+                                                <input type="text" name="Field" class="k-textbox w100p mand" ng-model="vm.childCodeValue" placeholder=" Field" ng-minlength="1" maxlength="100" readonly />
+                                            </div>
+                                        </div>-->
+                                        <!--<div ng-show="vm.showkeyDiv" class="hide demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                            <div class="box-col">
+                                                <label>Key</label>
+                                                <input type="text" name="Key" class="k-textbox w100p mand" ng-model="vm.childCodeValue" placeholder="Key" ng-minlength="1" maxlength="20" required />
+                                            </div>
+                                        </div>-->
+                                        <!--<div ng-show="vm.showkeyDiv1" class="hide demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                            <div class="box-col">
+                                                <label>Key</label>
+                                                <input type="text" name="Key" class="k-textbox w100p mand" ng-model="vm.childCodeValue" placeholder="Key" ng-minlength="1" maxlength="20" readonly />
+                                            </div>
+                                        </div>-->
+                                    </div>
+
+                                </div>
+
+
+                                <br />
+
+
+                                <div class="col-md-12 modal-footer">
+
+
+                                    <div ng-show="vm.IsSystemshow">
+                                        <label class="checkbox checkbox-custom pull-left pl-0 ml-0 chkaln" style="color:red">
+                                            System value can not be changed
+                                        </label>
+                                    </div>
+                                    <div class="">
+                                        <button type="submit" class="mui-btn mui-btn-primary mui-btn-raised bg-green" id="childsavebtn" ng-click="vm.saveChildControlCode()">Save</button>
+
+                                        <button type="submit" class="mui-btn mui-btn-default mui-btn-raised" ng-click="vm.cancelchild()">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <section class="container-liquid">
+                        <section class="row clearfix">
+                            <section class="column">
+                                <section class="col-md-12 col-xs-12 col-sm-12" id="leftsidebar">
+
+                                    <section class="tile" fullscreen="isFullscreen02">
+                                        <div class="tile-header pl-0" id="acc-icon">
+
+                                            <div class="tile-header dvd dvd-btm pl-0 pr-0">
+                                                <h3 class="custom-font">Control Codes</h3>
+                                            </div>
+
+                                            <ul class="controls hidden-xs hidden-sm">
+                                                <li id="add"><a data-ng-click="vm.addChild()" href="" tooltip-placement="top" tooltip="Add" tile-control ng-show="vm.add"><i class="fa fa-plus"></i></a></li>
+                                                <li><a data-ng-click="vm.editChild()" href="" tile-control tooltip-placement="top" tooltip="Edit" ng-show="vm.edit"><i class="fa fa-pencil "></i></a></li>
+                                                <li><a href="" tile-control tooltip-placement="top" tooltip="Active/Inactive" ng-click="vm.deleteChildControlCode()" ng-show="vm.inactive"><i class="fa fa-ban"></i></a></li>
+
+                                            </ul>
+
+
+
+                                            <ul class="controls visible-xs visible-sm">
+                                                <li class="dropdown" dropdown on-toggle="toggled(open)">
+                                                    <a href dropdown-toggle class="dropdown-toggle settings">&bull;&bull;&bull;</a>
+
+                                                    <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+
+                                                        <li id="add"><a data-ng-click="vm.addChild()" href="" ng-show="vm.add"><i class="fa fa-plus"></i>Add</a></li>
+                                                        <li><a data-ng-click="vm.editChild()" href="" ng-show="vm.edit"><i class="fa fa-pencil "></i>Edit</a></li>
+                                                        <li><a href="" ng-click="vm.deleteChildControlCode()" ng-show="vm.inactive"><i class="fa fa-ban"></i>Active/Inactive</a></li>
+
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="tile-body ">
+
+                                            <table st-table="accounts" class="st-table table table-custom table-striped table-responsive" ng-init="reverse=false">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:50px;"></th>
+                                                        <th>
+                                                            <!--<a href="#" ng-click="sortType = 'CodeValue'; sortReverse = !sortReverse">-->
+                                                            Field
+                                                            <!--span ng-show="sortType == 'CodeValue' && !sortReverse" class="fa fa-caret-down"></span>
+                                                                <span ng-show="sortType == 'CodeValue' && sortReverse" class="fa fa-caret-up"></span>
+                                                            </a>-->
+                                                        </th>
+                                                        <th style="width:150px;">
+                                                            <!--<a style="color:#444;" href="" ng-click="sortType = 'IsSystem'; sortReverse = !sortReverse">-->
+                                                            Generated By
+                                                            <!--<span ng-show="sortType == 'IsSystem' && !sortReverse" class="fa fa-caret-down"></span>
+                                                                <span ng-show="sortType == 'IsSystem' && sortReverse" class="fa fa-caret-up"></span>
+                                                            </a>-->
+
+                                                        </th>
+                                                        <th style="width:100px;">
+                                                            <!--<a style="color:#444;" href="" ng-click="sortType = 'Status'; sortReverse = !sortReverse">-->
+                                                            Status
+                                                            <!--<span ng-show="sortType == 'Status' && !sortReverse" class="fa fa-caret-down"></span>
+                                                                <span ng-show="sortType == 'Status' && sortReverse" class="fa fa-caret-up"></span>
+                                                            </a>-->
+                                                        </th>
+                                                        <th style="width:70px;">
+                                                            <!--<a style="color:#444;" href="" ng-click="sortType = 'RecOrder'; sortReverse = !sortReverse">-->
+                                                            Order
+                                                            <!--<span ng-show="sortType == 'RecOrder' && !sortReverse" class="fa fa-caret-down"></span>
+                                                                <span ng-show="sortType == 'RecOrder' && sortReverse" class="fa fa-caret-up"></span>
+                                                            </a>-->
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ui-sortable="vm.sortableOptions" class="tablecontainer" ng-model="vm.controlCodeCategory.ControlCodes">
+                                                    <tr class="gridlist placeholder" ng-repeat="row in vm.controlCodeCategory.ControlCodes|orderBy:RecOrder|orderBy:sortType:sortReverse|filter:searchFish">
+                                                        <td>
+
+
+                                                            <!--<label class="checkbox checkbox-custom-alt checkbox-custom-sm m-0">
+                                                            <span class="sorticon pull-left"><img src="content/images/iconsnew/sorticon.png" /></span>
+                                                            <input type="checkbox" id="{{row.Id}}" name="checkbox-inline" ng-checked="vm.selection.indexOf(row.Id) > -1" ng-click="vm.toggleSelection(row.Id,row.Status)" /><i></i>
+                                                             </label>-->
+                                                            <span class="sorticon pull-left"><img src="content/images/iconsnew/sorticon.png" /></span>
+                                                            <input type="checkbox" id="{{row.Id}}" class="k-checkbox rme" ng-checked="vm.selection.indexOf(row.Id) > -1" ng-click="vm.toggleSelection(row.Id,row.Status)" ng-disabled="$stateParams.val =='view'">
+
+                                                            <label class="k-checkbox-label" for="{{row.Id}}"></label>
+
+                                                        </td>
+
+                                                        <td><a ng-click="vm.editChild(row.Id,'view')">{{row.CodeValue}}</a></td>
+                                                        <td>{{row.IsSystem}}</td>
+
+                                                        <td>
+                                                            <label ng-show="row.Status=='Active'">Active</label><label ng-show="row.Status=='Inactive'">Inactive</label>
+                                                        </td>
+                                                        <td style="text-align:right">{{row.RecOrder}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                    </section>
+                                </section>
+
+
+                            </section>
+                        </section>
+                    </section>
+
+                    <!--</div>-->
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="record-history" id="createdshow">{{vm.controlCodeCategory.UserCreated}} created this on {{vm.controlCodeCategory.CreatedDate|  clientZoneDateTimeFormat }}</div>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="record-history" id="modifiedshow">{{vm.controlCodeCategory.ModifiedBy}} modified this on {{vm.controlCodeCategory.ModifiedDate | clientZoneDateTimeFormat }}</div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-12 f-rr" ng-show="vm.showfooterdiv">
+                        <div class="pull-right">
+
+                            <button type="submit" class="mui-btn mui-btn-primary mui-btn-raised" ng-click="vm.saveControlCode()" ng-disabled="progress" ng-show="vm.save">Save</button>
+                            <button type="reset" class="mui-btn mui-btn-default mui-btn-raised" ng-click="vm.cancelControlCode()">Cancel</button>
+                        </div>
+                    </div>
+
+
+                    <!--</form>
+
+                    </div>-->
+
+                </section>
+            </section>
+
+
+            <aside class="col-md-3 col-xs-12 col-sm-12 pl-0 pr-0 widgets pull-right">
+                <z-admincursor></z-admincursor>
+            </aside>
+
+
+        </section>
+    </section>
+
+</section>
+
+

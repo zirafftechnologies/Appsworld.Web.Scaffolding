@@ -1,0 +1,17 @@
+<script type="text/javascript">
+    var config = {
+            client_id: "AppsWorldTokenManager",
+            authority: "https://appsworldidentity.azurewebsites.net/identity",
+        };
+        var mgr = new OidcTokenManager(config);
+        
+        mgr.processTokenCallbackAsync().then(function () {
+            //console.log("Successfully Obtained Token", mgr.access_token);
+            alert(mgr.access_token);
+            //window.location.replace("/index.html");
+        }, function (error) {
+            //console.error("Problem Getting Token : " + (error.message || error));
+            alert(error);
+        });
+        
+</script>

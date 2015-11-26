@@ -1,0 +1,452 @@
+﻿<section class="tile contact-directive">
+    <div class="acc-form">
+        <form name="form3" id="form3" form-validate kendo-validator="validator" k-options="validationOptions" ng-submit="validate($event)" class="k-content row form-validation" role="form">
+            <!--<ng-form>-->            
+            <div id="communication">
+                <div class="row">
+                    <div class="col-md-12 pl-0 pr-0">
+                        <h3 class="custom-font pl-15">Communication </h3>
+                        <hr class="mt-0" />                       
+                    </div>
+                </div>
+                <div class="col-md-12  pl-0 pr-0 mt-10" ng-class="{'form-group':isNotCompany}">
+                    <div class="col-md-6 col-sm-12 col-xs-12 communtype">
+                        <span class="z-invalid" ng-show="isCMVT"><i class="fa fa-exclamation-circle"></i>&nbsp;{{communicationValidationText}} </span>
+
+                        <label>Type</label>
+                        <div ng-repeat="phone in phones">
+                            <div class="mt-5">
+                                <div class="input-group top-25p">
+                                    <div class="input-group-btn mw30p">
+                                        <select class="form-control p-0" ng-model="phone.key" ng-options="key.CodeValue as key.CodeValue for key in phoneTypes" ng-change="categorychange(phone.key,phone.value)"><option value="">Select Option</option></select>
+                                        <!--<select kendo-drop-down-list
+                            k-data-text-field="'CodeValue'"
+                            k-data-value-field="'CodeValue'"
+                            k-data-source="phoneTypes"
+                            k-option-label="' &nbsp;&nbsp;Select'"
+                            class="form-control lphone" k-on-change="categorychange(phone.key,phone.value)" id="pcategory" name="Category" ng-model="phone.key" k-ng-model="phone.key"></select>-->
+
+                                    </div>
+                                    <input class="form-control k-textbox" ng-keyup="validateComm(phone.value)" name="PhoneNumber" type="text" id="commVal" placeholder="{{phone.key}}" ng-model="phone.value">
+                                    <span ng-show="$index==0" ng-disabled="isView" class="input-group-addon btn btn-default abc1 text-center" ng-click="addphone()"><i class="fa fa-plus"></i></span>
+                                    <span ng-show="$index!=0" ng-disabled="isView" class="input-group-addon btn btn-default abc1 text-center" ng-click="deletephone($index)"><i class="fa fa-minus"></i></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="demo-section k-content col-md-6 col-sm-12 col-xs-12 mt-5">
+                        <div class="box-col">
+                            <label for="website" class="required">Website</label>
+                            <input type="text" data-validationtype="url" id="website" name="Website" ng-model="Website" class="k-textbox w100p" placeholder="URL" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div ng-show="isMultiAddress">
+                <div class="row">
+                    <br />
+                    <div class="col-md-6">
+                        <h3 class="custom-font mt-5">{{ttladdr1}}</h3>
+
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="address-nav ml-45p mt-13">
+
+                            <li>
+                                <input type="radio" ng-click="setAddressType('Rlocal')" ng-disabled="isView" name="engine" id="radio1" class="k-radio">
+                                <label class="k-radio-label" for="radio1">Local Address</label>
+                            </li>
+                            <li>
+                                <input type="radio" ng-click="setAddressType('Rforeign')" ng-disabled="isView" name="engine" id="radio2" class="k-radio">
+                                <label class="k-radio-label" for="radio2">Foreign Address</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--<input type="radio" name="radio" id="radio1" checked/>Local Address&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="radio" id="radio2" />Foreign Address-->
+
+                </div>
+                <hr class="mt-0" />
+                <div id="localaddressshow" ng-show="isLocal">
+
+                    <div class="col-md-12 pl-0 pr-0 mt-10">
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12 customdd" ng-class="{'inputonView' : isView}">
+                            <div class="box-col">
+                               
+                                <label for="postalcode" class="required">Postal Code</label>
+                                <span class="z-invalid" style="position: absolute; top: -4px; padding: 3px;" ng-show="isRpostval"><i class="fa fa-exclamation-circle"></i>&nbsp;Postal Code must be 6 digits </span>
+                                <!--<input kendo-auto-complete id="postalAutocmptl" data-validationtype="lpostalcode" data-validationrequired="{{isLocal}}" ng-keyup="postalCodeChanged('Rlocal')" ng-model="addressObject.ResPostalCode" name="LPostalCode" class="w100p br-3" k-options="resPostalLookUp" />-->
+                                <div angucomplete-alt id="postalAutocmptl"
+                                     placeholder="Postal Code"
+                                     pause="10"
+                                     initial-value="addressObject.ResPostalCode"
+                                     selected-object="selectedResObject"
+                                     remote-url="http://awbeanapi.azurewebsites.net/api/ElasticSearch/AutoComplete?indexName=postalcodes&indexField=PostalCode&noOfRecords=20&input="
+                                     title-field="PostalCode"
+                                     maxlength="6"
+                                     description-field="StreetName" ng-keydown="acceptInput($event)" ng-keyup="postalCodeChanged('Rlocal')" data-validationtype="lpostalcode" data-validationrequired="{{isLocal}}" name="LPostalCode" class="w100p" focus-out="postalVal('Rlocal')"></div>
+                            </div>
+                        </div>
+
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label id="unitno">Unit No</label>
+                                <input type="text" name="UnitNo" id="UnitNo" ng-model="addressObject.ResUnitNo" class="k-textbox w100p" placeholder="Unit No" />
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="">
+
+
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="blockno" class="required">Block/House No</label>
+                                <input type="text" id="blockno" ng-model="addressObject.ResBlockHouseNo" name="Block No" class="k-textbox w100p" placeholder="Block/House No" ng-disabled="isResDisableRequired" />
+                            </div>
+                        </div>
+
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="unitno" class="required">Street</label>
+                                <input type="text" id="street" name="Street" ng-model="addressObject.ResStreet" class="k-textbox w100p" placeholder="Street" ng-disabled="isResDisableRequired" />
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="">
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="building" class="required">Building</label>
+                                <input type="text" id="building" name="Building" ng-model="addressObject.ResBuildingEstate" class="k-textbox w100p" placeholder="Building" ng-disabled="isResDisableRequired" />
+                            </div>
+                        </div>
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="city" class="required">City</label>
+                                <input type="text" id="city" name="City" ng-model="addressObject.ResCity" class="k-textbox w100p" placeholder="City" ng-disabled="isResDisableRequired" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="">
+                        <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="state" class="required">State</label>
+                                <input type="text" id="state" name="State" ng-model="addressObject.ResState" placeholder="State" class="k-textbox w100p" ng-disabled="isResDisableRequired" />
+                            </div>
+                        </div>
+                        <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="search" class="required">Country</label>
+                                <input type="text" id="search" name="Country" ng-model="addressObject.ResCountry" placeholder="Country" disabled="disabled" class="k-textbox w100p" />
+                                <!--<input kendo-auto-complete ng-model="country" k-data-source="countryNames" class=" w100p" />-->
+                                <span class="k-invalid-msg" data-for="search"></span>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="foreignaddressshow" ng-show="!isLocal">
+                    <div class="col-md-12 pl-0 pr-0 mt-10">
+                        <div class="demo-section k-content form-group  col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label id="unitno">Unit No</label>
+                                <input type="text" name="UnitNo" id="UnitNo" ng-model="addressObject.ResUnitNo" class="k-textbox w100p" placeholder="Unit No" />
+                            </div>
+                        </div>
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="building" class="required">Building</label>
+                                <input type="text" id="building" name="Building" ng-model="addressObject.ResBuildingEstate" class="k-textbox w100p" placeholder="Building" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="">
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="unitno" class="required">Street</label>
+                                <input type="text" id="street" name="Street" ng-model="addressObject.ResStreet" class="k-textbox w100p" placeholder="Street" />
+                            </div>
+                        </div>
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="blockno" class="required"> Dependent Locality</label>
+                                <input type="text" id="blockno" ng-model="addressObject.ResBlockHouseNo" name="Block No" class="k-textbox w100p" placeholder="Dependent Locality" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="">
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="city" class="required">City</label>
+                                <input type="text" id="city" ng-model="addressObject.ResCity" name="City" class="k-textbox w100p" placeholder="City" />
+                            </div>
+                        </div>
+                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="state" class="required">State/Province</label>
+                                <input type="text" id="state" name="State/Province" ng-model="addressObject.ResState" class="k-textbox w100p" placeholder="State/Province" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12 auto">
+                            <div class="box-col">
+                                <div class="box-col">
+                                    <label for="Country" class="required">Country</label>
+                                    <input kendo-auto-complete
+                                           k-data-text-field="'name'"
+                                           k-data-source="Countries"
+                                           ng-model="addressObject.ResCountry" type="text" data-validationtype="{{isResCountryReuired}}" ng-class="{'mand':isResCountryReuired==='required'}" id="Country1" name="Country" class="w100p" placeholder="Country" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12 customdd">
+                            <div class="box-col">
+                                <div class="box-col">
+                                    <label for="postalcode" class="required">Postal Code</label>
+                                    <input type="text" id="rfpostalcode" data-validationtype="fpostalcode" data-validationrequired="{{!isLocal}}" name="PostalCode" ng-model="addressObject.ResPostalCode" class="k-textbox w100p" placeholder="Postal Code" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <br />
+                </div>
+
+            </div>
+            
+            <div id="divSameAddr">
+                <div class="col-md-12 pl-0 pr-0 mtm-5">
+                    <div class="row">
+                        <div class="col-md-3 mt-15">
+                            <h3 class="custom-font">{{ttladdr2}}</h3>
+
+                        </div>
+                        <div class="col-md-3" ng-show="isMultiAddress">
+                            <br />
+                            <label class="checkbox checkbox-custom-alt checkbox-custom-sm m-0"> <input type="checkbox" ng-click="copyAddress()" id="sameAddr" ng-model="addressObject.IsSameAsAbove" /><i></i>Same as Above Address </label>
+
+                        </div>
+                        <div class="col-md-3" ng-show="!isMultiAddress"></div>
+                        <div class="col-md-6">
+                            <ul class="address-nav ml-45p">
+                                <br />
+                                <li>
+                                    <input type="radio" ng-click="setAddressType('local')" name="sengine" id="sradio1" class="k-radio" ng-disabled="isView">
+                                    <label class="k-radio-label" for="sradio1">Local Address</label>
+                                </li>
+                                <li>
+                                    <input type="radio" ng-click="setAddressType('foreign')" ng-disabled="isView" name="sengine" id="sradio2" class="k-radio">
+                                    <label class="k-radio-label" for="sradio2">Foreign Address</label>
+                                </li>
+                                <li ng-click="showMAddress()" ng-show="isMultiAddress" class="pull-right mbm-30">
+                                    <button class="mui-btn mui-btn--primaryfab"><i class="fa {{angle}}"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr class="mt-0" />
+                    <!--<input type="radio" name="radio" id="radio1" checked/>Local Address&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="radio" id="radio2" />Foreign Address-->
+
+                </div>
+                
+                <div ng-show="isClicked" id="disable">
+                    <div id="slocaladdressshow" ng-show="isMADLocal">
+
+                        <div class="col-md-12 pl-0 pr-0 mt-10">
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12 top-25p auto customdd" ng-class="{'inputonView' : isView}">
+                                <div class="box-col">
+                                    <label for="postalcode" class="required">Postal Code</label>
+                                    <span class="z-invalid" style="position: absolute; top: -4px; padding: 3px; right: 15px; " ng-show="ispostval"><i class="fa fa-exclamation-circle"></i>&nbsp;Postal Code must be 6 digits </span>
+                                    <!--<input kendo-auto-complete id="postalAutocmptl1" ng-model="addressObject.AddressBook.PostalCode" ng-keyup="postalCodeChanged('local')" data-validationtype="lpostalcode" data-validationrequired="{{isMADLocal}}" name="SLPostalCode" class="w100p br-3" type="text" k-options="postalLookUp" />-->
+                                    <div angucomplete-alt id="postalAutocmptl1"
+                                         placeholder="Postal Code"
+                                         pause="400"
+                                         initial-value="addressObject.AddressBook.PostalCode"
+                                         selected-object="selectedObject"
+                                         remote-url="http://awbeanapi.azurewebsites.net/api/ElasticSearch/AutoComplete?indexName=postalcodes&indexField=PostalCode&noOfRecords=100&input="
+                                         title-field="PostalCode"
+                                         maxlength="6"
+                                         description-field="StreetName"
+                                         input-class="form-control form-control-small" ng-keydown="acceptInput($event)" ng-keyup="postalCodeChanged('local')" data-validationtype="lpostalcode" data-validationrequired="{{isMADLocal}}" name="SLPostalCode" focus-out="postalVal('local')" class="w100p"></div>
+                                </div>
+                            </div>
+
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label id="unitno">Unit No</label>
+                                    <input type="text" name="UnitNo" id="UnitNo" ng-model="addressObject.AddressBook.UnitNo" class="k-textbox w100p" placeholder="Unit No" />
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="">
+
+
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="blockno" class="required">Block/House No</label>
+                                    <input type="text" id="blockno" ng-model="addressObject.AddressBook.BlockHouseNo" name="Block No" class="k-textbox w100p" placeholder="Block/House No" ng-disabled="isDisableRequired" />
+                                </div>
+                            </div>
+
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="unitno" class="required">Street</label>
+                                    <input type="text" id="street" name="Street" ng-model="addressObject.AddressBook.Street" class="k-textbox w100p" placeholder="Street" ng-disabled="isDisableRequired" />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="">
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="building" class="required">Building</label>
+                                    <input type="text" id="building" name="Building" ng-model="addressObject.AddressBook.BuildingEstate" class="k-textbox w100p" placeholder="Building" ng-disabled="isDisableRequired" />
+                                </div>
+                            </div>
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="city" class="required">City</label>
+                                    <input type="text" id="city" name="City" ng-model="addressObject.AddressBook.City" class="k-textbox w100p" placeholder="City" ng-disabled="isDisableRequired" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="">
+                            <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="state" class="required">State</label>
+                                    <input type="text" id="state" placeholder="State" name="State" ng-model="addressObject.AddressBook.State" class="k-textbox w100p" ng-disabled="isDisableRequired" />
+                                </div>
+                            </div>
+                            <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="search" class="required">Country</label>
+                                    <input type="text" id="search" placeholder="Country" name="Country" ng-model="addressObject.AddressBook.Country" disabled="disabled" class="k-textbox w100p" />
+                                    <!--<input kendo-auto-complete ng-model="country" k-data-source="countryNames" class=" w100p" />-->
+                                    <span class="k-invalid-msg" data-for="search"></span>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div id="sforeignaddressshow" ng-show="!isMADLocal">
+                        
+
+                        <div class="col-md-12 pl-0 pr-0 mt-10">
+                            <div class="demo-section k-content form-group  col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label id="unitno">Unit No</label>
+                                    <input type="text" name="UnitNo" id="UnitNo" ng-model="addressObject.AddressBook.UnitNo" class="k-textbox w100p" placeholder="Unit No" />
+                                </div>
+                            </div>
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="building" class="required">Building</label>
+                                    <input type="text" id="building" name="Building" ng-model="addressObject.AddressBook.BuildingEstate" class="k-textbox w100p" placeholder="Building" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="unitno" class="required">Street</label>
+                                    <input type="text" id="street" name="Street" ng-model="addressObject.AddressBook.Street" class="k-textbox w100p" placeholder="Street" />
+                                </div>
+                            </div>
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="blockno" class="required"> Dependent Locality</label>
+                                    <input type="text" id="blockno" ng-model="addressObject.AddressBook.BlockHouseNo" name="Block No" class="k-textbox w100p" placeholder="Dependent Locality" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="city" class="required">City</label>
+                                    <input type="text" id="city" ng-model="addressObject.AddressBook.City" name="City" class="k-textbox w100p" placeholder="City" />
+                                </div>
+                            </div>
+                            <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                <div class="box-col">
+                                    <label for="state" class="required">State/Province</label>
+                                    <input type="text" id="state" name="State/Province" ng-model="addressObject.AddressBook.State" class="k-textbox w100p" placeholder="State/Province" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12 auto">
+                                <div class="box-col">
+                                    <div class="box-col">
+                                        <label for="Country" class="required">Country</label>
+                                        <input kendo-auto-complete
+                                               k-data-text-field="'name'"
+                                               k-data-source="Countries"
+                                               ng-model="addressObject.AddressBook.Country" type="text" data-validationtype="{{isCountryReuired}}" id="Country" name="Country" ng-class="{'mand':isCountryReuired==='required'}" class="w100p" placeholder="Country" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="demo-section k-content mb-5 col-md-6 col-sm-6 col-xs-12 customdd">
+                                <div class="box-col">
+                                    <div class="box-col">
+                                        <label for="postalcode" class="required">Postal Code</label>
+                                        <input type="text"
+                                               id="mfpostalcode" name="SFPostalCode" data-validationtype="fpostalcode" data-validationrequired="{{!isMADLocal}}" ng-model="addressObject.AddressBook.PostalCode" class="k-textbox w100p" placeholder="Postal Code" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+           
+        </form>
+    </div>
+
+</section>
+
+<script>
+ 
+    $("#lphone").kendoDropDownList();
+
+</script>

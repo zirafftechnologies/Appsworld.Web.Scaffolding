@@ -1,0 +1,85 @@
+﻿
+    <div id="communication" form-validate>
+        <div class="row">
+            <div class="tile-header col-md-12 pl-0 pr-0 pb-0">
+                <div class="row custom-font pl-15">
+                    <h3 class="pull-left mb-5 mt-3">
+                        Communication
+                    </h3>
+                    <!--<span class="pull-right">
+                        <span class="btn btn-default abc1 text-center mr-15" ng-click="addCommunication()" ng-if="!isView"><i class="fa fa-plus"></i></span>
+                    </span>-->
+                    <ul class="controls hidden-xs hidden-sm mt-0 addnewcom" ng-if="!isView">
+                        <li id="add"><a class="btn btn-default abc1 text-center mr-15 b-1" ng-click="addCommunication()" ng-if="!isView" href="" tooltip-placement="bottom" tooltip="Add" tile-control><i class="fa fa-plus"></i></a></li>
+                    </ul>
+                </div>
+                
+                <hr class="mt-0" />
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 pl-0 pr-0 communtype">
+                <!--<span class="z-invalid"><i class="fa fa-exclamation-circle"></i>&nbsp;</span>-->
+               
+                    <div class="col-md-6 col-sm-6 col-xs-6 auto" ng-repeat="comm in communication track by $index" ng-if="$index/2===0">
+                        <label>&nbsp;</label>
+                        <div class="mt-5">
+                            <div class="input-group top-25p">
+                                <div class="input-group-btn mw30p">
+                                    <select class="form-control p-0" ng-model="comm.key" ng-options="key.CodeValue as key.CodeValue for key in phoneTypes" ng-change="categoryChange(comm.key,comm.value)"><option value="">Select Option</option></select>
+                                </div>
+                                <input class="form-control k-textbox" maxlength="200" ng-model="comm.value" name="{{comm.key}}" type="text" id="{{'cmm_'+$index}}" placeholder="{{comm.key}}" data-validationtype="{{comm.key| lowercase}}" ng-blur="setComm()">
+                                <span class="input-group-addon btn btn-default abc1 text-center" ng-click="deleteCommunication($index)" ng-disabled="communication.length===1"><i class="fa fa-times"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-6 auto" ng-repeat="comm in communication track by $index" ng-if="$index/2!==0">
+                        <label>&nbsp;</label>
+                        <div class="mt-5">
+                            <div class="input-group top-25p">
+                                <div class="input-group-btn mw30p">
+                                    <select class="form-control p-0" ng-model="comm.key" ng-options="key.CodeValue as key.CodeValue for key in phoneTypes" ng-change="categoryChange(comm.key,comm.value)"><option value="">Select Option</option></select>
+                                </div>
+                                <input class="form-control k-textbox" maxlength="200" ng-model="comm.value" name="{{comm.key}}" type="text" id="{{'cmm_'+$index}}" placeholder="{{comm.key}}" data-validationtype="{{comm.key|lowercase}}" ng-blur="setComm()">
+                                <span class="input-group-addon btn btn-default abc1 text-center" ng-click="deleteCommunication($index)" ng-disabled="communication.length===1"><i class="fa fa-times"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+        <!--<div class="col-md-12  pl-0 pr-0 mt-10" ng-class="{'form-group':isNotCompany}">
+            <div class="col-md-12 col-sm-12 col-xs-12 communtype">
+                <span class="z-invalid" ng-show="isCMVT"><i class="fa fa-exclamation-circle"></i>&nbsp;{{communicationValidationText}} </span>
+                <label>Type</label>
+                <div ng-repeat="phone in phones" class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="mt-5">
+                        <div class="input-group top-25p">
+                            <div class="input-group-btn mw30p">
+                                <select class="form-control p-0" ng-model="phone.key" ng-options="key.CodeValue as key.CodeValue for key in phoneTypes" ng-change="categorychange(phone.key,phone.value)"><option value="">Select Option</option></select>
+                            </div>
+                            <input class="form-control k-textbox" ng-keyup="validateComm(phone.value)" name="PhoneNumber" type="text" id="commVal" placeholder="{{phone.key}}" ng-model="phone.value">
+                            <span ng-show="$index==0" ng-disabled="isView" class="input-group-addon btn btn-default abc1 text-center" ng-click="addphone()"><i class="fa fa-plus"></i></span>
+                            <span ng-show="$index!=0" ng-disabled="isView" class="input-group-addon btn btn-default abc1 text-center" ng-click="deletephone($index)"><i class="fa fa-minus"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-repeat="phone in phones" class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="mt-5">
+                        <div class="input-group top-25p">
+                            <div class="input-group-btn mw30p">
+                                <select class="form-control p-0" ng-model="phone.key" ng-options="key.CodeValue as key.CodeValue for key in phoneTypes" ng-change="categorychange(phone.key,phone.value)"><option value="">Select Option</option></select>
+                            </div>
+                            <input class="form-control k-textbox" ng-keyup="validateComm(phone.value)" name="PhoneNumber" type="text" id="commVal" placeholder="{{phone.key}}" ng-model="phone.value">
+                            <span  ng-disabled="isView" class="input-group-addon btn btn-default abc1 text-center" ng-click="addphone()"><i class="fa fa-plus"></i></span>
+                            <span ng-show="$index!=0" ng-disabled="isView" class="input-group-addon btn btn-default abc1 text-center" ng-click="deletephone($index)"><i class="fa fa-minus"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>

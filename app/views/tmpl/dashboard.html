@@ -1,0 +1,139 @@
+<section class="container-liquid" data-ng-controller="dashboard">
+    <section class="row clearfix">
+        <section class="col-md-12 column">
+            <section class="col-xs-12 col-sm-12 col-md-9" id="leftsidebar">
+                <section class="tile" fullscreen="isFullscreen02">
+                    <div class="tile-header dvd dvd-btm">
+                        <h2 class="custom-font">
+                            <!--<i class="mr-5 fa fa-file"></i>-->
+                            <img src="content/images/icons/Graph.png" width="36" height="36" />Dashboard
+                        </h2>
+                        <ul class="controls">
+                            
+                        </ul>
+                    </div>
+                    </section>
+                    <div class="pageheader hide">
+
+                        <!--<h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>-->
+
+                        <div class="page-bar">
+
+                            <ul class="page-breadcrumb">
+                                <li>
+                                    <a href="/"><i class="fa fa-home"></i> {{main.title}}</a>
+                                </li>
+                                <li>
+                                    <a href="/">{{page.title}}</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="page-toolbar">
+                                <a date-range-picker ng-change="vm.action()" value="Select Ranges" options="dateRangeOption" class="form-control calendar Button" ng-model="date">
+                                    <i class="fa fa-calendar"></i>  <span>{{date.startDate|date:'MMMM dd, yy'}} - {{date.endDate|date:'MMMM dd, yy'}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br />
+                    <img src="content/images/cursor.png" class="img-responsive centered" />
+                </section>
+
+
+            <aside class="col-md-3 col-lg-3 widgets aside-w" id="rightsidebar">
+
+                <section class="tile" fullscreen="isFullscreen03">
+
+                    <!-- tile header -->
+                    <div class="tile-header dvd dvd-btm">
+                        <h2 class="custom-font wfs-21"><i class="fa fa-bar-chart mr-5"></i>Sales Vs Orders</h2>
+                        
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body" ng-controller="PieChartCtrl">
+                        <flot dataset="dataset" options="options" height="250px"></flot>
+                    </div>
+
+                   
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+                <br/>
+                <section class="tile tile-simple mui-btn-raised mbtn-pt">
+
+                    <!-- tile widget -->
+                    <div class="tile-widget bg-cyan text-center p-30">
+                        <i class="fa fa-usd fa-3x"></i>
+                    </div>
+                    <!-- /tile widget -->
+                    <!-- tile body -->
+                    <div class="tile-body text-center">
+
+                        <ul class="list-inline tbox m-0">
+                            <li class="b-r tcol">
+                                <h1 class="m-0">3,954</h1>
+                                <span class="text-muted">Income</span>
+                            </li>
+                            <li class="tcol">
+                                <h1 class="m-0">1,295</h1>
+                                <span class="text-muted">Outcome</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <section class="tile tile-simple mui-btn-raised mbtn1-pt">
+
+                            <!-- tile widget -->
+                            <div class="tile-widget bg-warning text-center p-30">
+                                <i class="fa fa-shopping-cart fa-3x"></i>
+                            </div>
+                            <!-- /tile widget -->
+                            <!-- tile body -->
+                            <div class="tile-body text-center">
+
+                                <h1 class="m-0">369</h1>
+                                <span class="text-muted">New Orders</span>
+
+                            </div>
+                            <!-- /tile body -->
+
+                        </section>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <section class="tile tile-simple mui-btn-raised mbtn2-pt">
+
+                            <!-- tile widget -->
+                            <div class="tile-widget bg-hotpink text-center p-30">
+                                <i class="fa fa-users fa-3x"></i>
+                            </div>
+                            <!-- /tile widget -->
+                            <!-- tile body -->
+                            <div class="tile-body text-center">
+
+                                <h1 class="m-0">69</h1>
+                                <span class="text-muted">New Users</span>
+
+                            </div>
+                            <!-- /tile body -->
+
+                        </section>
+                    </div>
+                    </div>
+            </aside>
+        </section>
+    </section>
+</section>

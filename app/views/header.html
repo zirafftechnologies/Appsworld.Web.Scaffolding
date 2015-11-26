@@ -1,0 +1,611 @@
+<nav class="navbar navbar-default nav-rr">
+    <div class="container-liquid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" ng-controller="headerController as vm">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <ul id="breadcrumb" class="nav navbar-nav logo-rr myCustomNav crumbs visible-lg visible-md hidden-sm hidden-xs">
+                <li class="first"><a class="headarrow" ui-sref="app.dashboard" style="z-index:9; font-size:20px;" href=""><i class="fa fa-home"></i></a></li>
+
+                <li class="dropdown divided-right settings module header-title" dropdown on-toggle="toggled(open)">
+                    <a href="" class="headarrow dropdown-toggle brand" dropdown-toggle style="z-index:8;"><span>{{vm.companyName}}<i class="fa fa-angle-down fa-1x"></i></span></a>
+
+                    <ul class="dropdown-menu animated newmodule">
+                        <li>
+                            <ul class="modulemenu">
+                                <li class="d-b" ng-repeat="mlink in modulemaster">
+                                    <a ng-show="mlink.Status == 'Active'" ng-click="selectedCursor('{{mlink.Name}}','{{mlink.Id}}','{{mlink.ModuleDetails}}')">
+                                        <div class="{{mlink.Url}}"></div><span>{{mlink.Name}}</span>
+                                    </a>
+                                    <a class="not-allowed" ng-show="mlink.Status == 'Inactive'"><div class="{{mlink.Url}} not-allowed"></div><span class="not-allowed">{{mlink.Name}}</span></a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="dropdown divided-right submodule cursor-rr header-links innerlinks" id="isCursorSelected1" dropdown on-toggle="toggled(open)">
+                    <a ui-sref="#" class="headarrow dropdown-toggle" dropdown-toggle style="z-index:7;" href="">
+                        <span class="fa-1x">{{vm.cursorName1}}</span> <i class="fa fa-angle-down fa-1x"></i>
+                    </a>
+                    <ul class="dropdown-menu animated mega-dropdown-menu row">
+
+                        <li class="col-sm-3">
+                            <ul id="1"></ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul id="2"></ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul id="3"></ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <!--<li>
+            <a class="headarrow" style="z-index:6;" href="{{vm.selectedPageUrl}}">
+                <span class="fa-1x">{{vm.selectedPageName}}</span>
+            </a>
+        </li>-->
+            </ul>
+
+            
+            <ul class="nav navbar-nav logo-rr hidden-lg hidden-md visible-sm visible-xs custresponsive">
+                <li class="dropdown divided-right settings module header-title" dropdown on-toggle="toggled(open)">
+                    <a href="" class="dropdown-toggle brand" dropdown-toggle>
+                        <span><img ng-src="content/images/gifs/logo.png" />{{vm.companyName}}<i class="fa fa-angle-down fa-1x"></i></span>
+                    </a>
+
+                    <ul class="dropdown-menu animated">
+                        <li>
+                            <ul class="modulemenu">
+                                <li class="d-b" ng-repeat="mlink in modulemaster">
+                                    <a ng-show="mlink.Status == 'Active'" ng-click="selectedCursor('{{mlink.Name}}','{{mlink.Id}}','{{mlink.ModuleDetails}}')">
+                                        <div class="{{mlink.Url}}"></div><span>{{mlink.Name}}</span>
+                                    </a>
+                                    <a class="not-allowed" ng-show="mlink.Status == 'Inactive'"><div class="{{mlink.Url}} not-allowed"></div><span class="not-allowed">{{mlink.Name}}</span></a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="homelink">
+                    <a ui-sref="app.dashboard" class="">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li class="dropdown divided-right submodule cursor-rr header-links" id="isCursorSelected1" dropdown on-toggle="toggled(open)">
+                    <a ui-sref="#" class="dropdown-toggle" dropdown-toggle>
+                        <span class="fa-1x">{{vm.cursorName1}}</span> <i class="fa fa-angle-down fa-1x"></i>
+                    </a>
+                    <ul class="dropdown-menu animated mega-dropdown-menu row">
+
+                        <li class="col-sm-3" ng-repeat="mlink in result">
+                            <span class="heading-link">{{mlink.grpName}}</span>
+                           
+                            <a ng-repeat="l in mlink.Details" href="{{l.Url}}">{{l.Heading}}</a>
+                        </li>
+                        <!--<li class="col-sm-3">
+                            <ul id="2"></ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul id="3"></ul>
+                        </li>-->
+
+                    </ul>
+                </li>
+            </ul>
+
+
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="plus1" dropdown on-toggle="toggled(open)" ng-controller="bookmarkctrldata as vm">
+
+                    <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <img ng-src="content/images/icons/plus.png" class="" alt="create" />
+                    </a>
+                    <ul class="dropdown-menu animated fadeIn with-arrow w-200" ng-show="vm.checkRole('admin')">
+                        <li ng-repeat="link in vm.contactpost" ng-show="vm.contactpost.length!=0"><a href="{{link.Url}}">{{link.Text}}</a></li>
+                        <!--<li><a ui-sref="app.basictree">BasicTreeView</a></li>-->
+                        <li ng-show="vm.contactpost.length==0"><a ui-sref="#">No BookMarks Found</a></li>
+                     </ul>
+                    <ul class="dropdown-menu animated fadeIn with-arrow w-200" ng-show="!vm.checkRole('admin')">
+                        <li><a ui-sref="app.company">Companies</a></li>
+                        <li><a ui-sref="app.taxCodes">Tax Codes</a></li>
+                        <li><a ui-sref="app.mastergrid({form: 'CurrencyCode'})">Currency Codes</a></li>
+                        <!--<li><a ui-sref="app.accountTypeTerms({source:'AccountTypes'})">Account Type</a></li>
+                        <li><a ui-sref="app.accountTypeTerms({source:'TermsOfPayments'})">Terms Of Payments</a></li>-->
+
+                    </ul>
+                </li>
+
+                <form class="form-inline navbar-form navbar-left form-rr" role="search">
+
+                    <div class="form-group header-form">
+                        <input id="globalsearch" type="text" ng-model="searchContent" class="w100p k-textbox" placeholder="Search">
+                    </div>
+                    <a ui-sref="#" type="submit" class="btn btn-default" ng-click="search(searchContent)"><i class="fa fa-search"></i></a>
+                </form>
+
+                <li class="dropdown notifications panel-rr" dropdown on-toggle="toggled(open)">
+
+                    <a ui-sref="#" class="dropdown-toggle" dropdown-toggle>
+                        <i class="fa fa-bell"></i>
+                        <span class="badge bg-lightred b-badge">3</span>
+                    </a>
+
+
+                    <div class="dropdown-menu panel panel-default animated fadeIn no-arrow">
+
+                        <div class="panel-heading">
+                            You have <strong>3</strong> notifications
+                        </div>
+
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                                <div class="media row">
+                                    <div class="col-md-3 pull-left thumb thumb-sm w-50 pr-0 notif">
+                                        <img class="media-object img-circle" src="content/images/random-avatar2.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a ui-sref="#">
+
+                                            <span class="block padtop">User Imrich cancelled account</span>
+
+                                        </a>
+                                        <small class="text-muted">6 minutes ago</small>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="list-group-item">
+                                <div class="media row">
+                                    <div class="col-md-3 pull-left thumb thumb-sm w-50 pr-0 notif">
+                                        <img class="media-object img-circle" src="content/images/random-avatar2.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a ui-sref="#">
+                                            <span class="block padtop">New user registered</span>
+
+                                        </a>
+                                        <small class="text-muted">12 minutes ago</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item">
+                                <div class="media row">
+                                    <div class="col-md-3 pull-left thumb thumb-sm w-50 pr-0 notif">
+                                        <img class="media-object img-circle" src="content/images/random-avatar2.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a ui-sref="#">
+                                            <span class="block padtop">User Robert locked account</span>
+
+                                        </a>
+                                        <small class="text-muted">18 minutes ago</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                        <span class="panel-footer">
+                            <a ui-sref="#/notfound">Show all notifications <fa name="angle-right" class="pull-right"></fa></a>
+                        </span>
+
+                    </div>
+
+
+                </li>
+
+
+                <li class="dropdown nav-profile nav-user" dropdown on-toggle="toggled(open)">
+
+                    <a ui-sref="#" class="dropdown-toggle" ng-controller="headerController as vm" dropdown-toggle>
+                        <img src="http://placehold.it/30?text=A" alt="" class="img-circle size-30x30">
+                        <span class="">{{vm.currentUser}}<fa name="angle-down"></fa></span>
+                    </a>
+
+                    <ul class="dropdown-menu animated fadeIn">
+
+                        <li class="row">
+                            <a ui-sref="#/notfound">
+
+                                <fa name="user"></fa>Profile<span class="badge bg-greensea pbadge">86%</span>
+                            </a>
+                        </li>
+
+                        <li ng-controller="headerController as vm" ng-show="showeditprofile">
+                            <a ui-sref="app.userprofile">
+                                <fa name="user"></fa>Edit Profile
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ui-sref="#/notfound">
+                                <fa name="cog"></fa>Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" ng-controller="resetpasswordController" data-ng-click="open('md')" title="Model">
+                                <fa name="lock"></fa>Change Password
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a ui-sref="login.html" onclick="logout()">
+                                <fa name="sign-out"></fa>Logout
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<nav class="navbar navbar-default hide" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-controller="headerController">
+
+        <!--<ul class="nav navbar-nav">
+
+            <li class="dropdown divided-right settings module" dropdown on-toggle="toggled(open)">
+                <a ui-sref="#" class="dropdown-toggle brand" dropdown-toggle>
+                    <span><img ng-src="../../content/images/1.png" />{{main.title}}<i class="fa fa-angle-down fa-1x"></i></span>
+                </a>
+                <ul class="dropdown-menu animated">
+                    <li>
+                        <ul class="modulemenu">
+                            <li data-ng-repeat="mlink in modulemaster"><a ui-sref="#" ng-click="selectedCursor('{{mlink.Name}}','{{mlink.Id}}')"><img ng-src="{{mlink.Url}}" class="img-responsive modulepic" /><span>{{mlink.Name}}</span></a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="homelink">
+                <a ui-sref="#/" class="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li class="dropdown divided-right submodule cursor-rr" ng-show="isCursorSelected" dropdown on-toggle="toggled(open)">
+                <a ui-sref="#" class="dropdown-toggle" dropdown-toggle>
+                    <span class="fa-1x">{{cursorName}}</span> <i class="fa fa-angle-down fa-1x"></i>
+                </a>
+                <ul class="dropdown-menu animated mega-dropdown-menu row">
+
+                    <li class="col-sm-3">
+                        <ul id="1"></ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul id="2"></ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul id="3"></ul>
+                    </li>
+                    <li class="col-sm-3 slider">
+                        <ul>
+
+                            <li class="dropdown-header text-left">Recent Posts</li>
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <a ui-sref="#">
+                                            <img ng-src="../../content/images/sales/2.jpg" class="img-responsive" alt="product 2" />
+                                        </a>
+                                        <h4>Sales Reports at one touch</h4>
+                                    </div>
+                                    <div class="item">
+                                        <a ui-sref="#">
+                                            <img ng-src="../../content/images/sales/3.jpg" class="img-responsive" alt="product 3" />
+                                        </a>
+                                        <h4>Growth in Sales</h4>
+                                    </div>
+                                    <div class="item">
+                                        <a ui-sref="#">
+                                            <img ng-src="../../content/images/sales/1.jpg" class="img-responsive" alt="product 1" />
+                                        </a>
+                                        <h4>Close more sales</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+        </ul>-->
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="plus1" dropdown on-toggle="toggled(open)">
+
+                <a ui-sref="#" class="dropdown-toggle" dropdown-toggle>
+                    <img ng-src="content/images/icons/plus.png" class="" alt="create" />
+                </a>
+
+                <ul class="dropdown-menu animated fadeIn with-arrow">
+
+                    <li><a ui-sref="#/accounts"><i class="fa fa-user"></i>Accounts</a></li>
+                    <li><a ui-sref="/#/accountMastersDetail/AccountTypes"><i class=" fa fa-bars"></i>Account Types</a></li>
+                    <li><a ui-sref="#/accountMastersDetail/AccountIdTypes"><i class="fa fa-list"></i>Account Id Types</a></li>
+                    <li><a ui-sref="#/accountMastersDetail/AccountSources"><i class="fa fa-file"></i>Account Source</a></li>
+                    <li><a ui-sref="#/accountMastersDetail/TermsOfPayments"><i class="fa fa-dollar"></i>Terms of Payment</a></li>
+                    <li><a ui-sref="#/accountMastersDetail/Industries"><i class="fa fa-building"></i>Industry</a></li>
+                    <li><a ui-sref="#/users"><i class="fa fa fa-users"></i>Users</a></li>
+                    <li><a ui-sref="#/createrole"><i class="fa fa-users"></i>Roles</a></li>
+                    <li><a ui-sref="#/notfound"><i class="fa fa-dashboard"></i>Sales Dashboard</a></li>
+                    <li><a ui-sref="#/notfound"><i class="fa fa-file"></i>Incentive Report</a></li>
+                    <li><a ui-sref="#/notfound"><i class="fa fa-bar-chart"></i>Sales Target Report</a></li>
+
+                </ul>
+
+            </li>
+
+            <form class="form-inline navbar-form navbar-left form-rr" role="search">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <a ui-sref="#" type="submit" class="btn btn-default"><i class="fa fa-search"></i></a>
+            </form>
+
+            <li class="dropdown notifications panel-rr" dropdown on-toggle="toggled(open)">
+
+                <a ui-sref="#" class="dropdown-toggle" dropdown-toggle>
+                    <fa name="bell"></fa>
+                    <span class="badge bg-lightred">3</span>
+                </a>
+
+
+                <div class="dropdown-menu panel panel-default animated fadeIn">
+
+                    <div class="panel-heading">
+                        You have <strong>3</strong> notifications
+                    </div>
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <div class="media">
+                                <span class="pull-left media-object media-icon bg-danger">
+                                    <fa name="ban"></fa>
+                                </span>
+
+                                <a ui-sref="#">
+
+                                    <span class="block padtop">User Imrich cancelled account</span>
+
+                                </a>
+                                <small class="text-muted">6 minutes ago</small>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="media">
+                                <span class="pull-left media-object media-icon bg-primary">
+                                    <fa name="bolt"></fa>
+                                </span>
+                                <a ui-sref="#">
+                                    <span class="block padtop">New user registered</span>
+
+                                </a>
+                                <small class="text-muted">12 minutes ago</small>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="media">
+                                <span class="pull-left media-object media-icon bg-greensea">
+                                    <fa name="lock"></fa>
+                                </span>
+                                <a ui-sref="#">
+                                    <span class="block padtop">User Robert locked account</span>
+
+                                </a>
+                                <small class="text-muted">18 minutes ago</small>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <span class="panel-footer">
+                        <a ui-sref="#/notfound">Show all notifications <fa name="angle-right" class="pull-right"></fa></a>
+                    </span>
+
+                </div>
+
+
+            </li>
+
+
+            <li class="dropdown nav-profile" dropdown on-toggle="toggled(open)">
+
+                <a ui-sref="#" class="dropdown-toggle" dropdown-toggle>
+                    <img ng-src="content/images/profile-photo.jpg" alt="" class="img-circle size-30x30">
+                    <span>{{userName}}<fa name="angle-down"></fa></span>
+                </a>
+
+                <ul class="dropdown-menu animated fadeIn">
+
+                    <li>
+                        <a ui-sref="#/notfound">
+
+                            <fa name="user"></fa>Profile<span class="badge bg-greensea">86%</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ui-sref="#" ng-click="editProfile()">
+                            <fa name="user"></fa>Edit Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ui-sref="#/notfound">
+                            <fa name="cog"></fa>Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="#" data-ng-click="open('md')" title="Model">
+                            <fa name="lock"></fa>Change Password
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a ui-sref="login.html" data-action="userLogout">
+                            <fa name="sign-out"></fa>Logout
+                        </a>
+                    </li>
+
+
+                </ul>
+
+            </li>
+
+
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+
+
+<script type="text/ng-template" id="resetpasswordcontent.html">
+    
+    <div class="custheadloader">
+        <!--<div z-loader></div>-->
+        <div class="modal-header">
+            <h3 class="modal-title custom-font"> Change Password</h3>
+        </div>
+        <div z-loader></div>
+        <!--<div class="col-md-12" id="validationDiv" ng-show="isValidationRequired">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                <i class="fa fa-exclamation-circle"></i>&nbsp;{{validationText}}
+                <span style="padding-right:80px"></span>
+            </div>
+        </div>-->
+        <!--<div class="modal-body row">
+            <form name="form" class="form-validation mt-20 resetform" submit="submitForm(form.$valid)" novalidate>
+                <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : form.currentPass.$invalid && !form.currentPass.$pristine, 'has-success' : form.currentPass.$valid && !form.currentPass.$pristine}">
+                        <input type="password" name="currentPass" class="form-control mand" ng-minlength="3" placeholder="Current Password" ng-model="currentPassword" required>
+                        <span class="fa fa-lock"></span>
+                    </div>
+
+                    <p class="help-block">
+                        <span ng-show="form.currentPass.$error.minlength">Password is too short.</span>
+                    </p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : form.newPassword.$invalid && !form.newPassword.$pristine, 'has-success' : form.newPassword.$valid && !form.newPassword.$pristine}">
+
+
+                    <div class="form-group">
+                        <input type="password" name="newPassword" class="form-control mand" maxlength="50" ng-minlength="6" placeholder=" New Password" ng-model="newPassword" required>
+                        <span class="fa fa-lock"></span>
+                    </div>
+                    <p class="help-block">
+                        <span ng-show="form.newPassword.$invalid && !form.newPassword.$pristine">Password is required.</span>
+                        <span ng-show="form.newPassword.$error.minlength">Password is too short.</span>
+                    </p>
+                </div>
+
+                <div class="form-group " ng-class="{ 'has-error' : form.confirmPassword.$invalid && !form.confirmPassword.$pristine, 'has-success' : form.confirmPassword.$valid && !form.confirmPassword.$pristine}">
+
+
+                    <div class="form-group">
+                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control mand" placeholder="Confirm Password" ng-model="confirmPassword" ui-validate=" '$value==newPassword' " ui-validate-watch=" 'vm.usersDetails.newPassword' " required>
+                        <span class="fa fa-lock"></span>
+                    </div>
+                    <p class="help-block">
+                        <span ng-show='form.confirmPassword.$error.validator'>Passwords do not match!</span>
+                    </p>
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="mui-btn mui-btn-primary mui-btn-raised" ng-disabled="progress" ng-click="ok()">Save</button>
+            <button class="mui-btn mui-btn-default mui-btn-raised btn-ef-4 btn-ef-4c" ng-click="cancel()">Cancel</button>
+        </div>-->
+
+
+        <div class="col-md-12" id="validationDiv" ng-show="isValidationRequired" style=" background-color: #fff;">
+            <div class="alert alert-danger alert-dismissable">
+                <p ng-repeat="vms in validationMessages">
+                    <i class="fa fa-exclamation-circle"></i>&nbsp;{{vms}}
+                </p>
+                <!--<span style="padding-right:80px"></span>-->
+            </div>
+        </div>
+        <div class="modal-body p-0 col-md-12" style=" background-color: #fff;">
+            <form name="form" id="form" kendo-validator="vm.validator" k-options="vm.validationOptions" ng-submit="vm.validate($event)" class="k-content row form-validation" role="form">
+                <div class="col-md-12 pl-0 pr-0">
+                    <div class="col-md-12 logtop-25p mt-15">
+                        <label>Current password</label>
+                        <input type="password" id="currentPass" ng-blur="currentPasswordFun()" name="Current password" class="k-textbox w100p mand" placeholder="Current password" ng-model="currentPassword" data-validationtype="required">
+                    </div>
+                    <div class="col-md-12 logtop-25p mt-15">
+                        <label>
+                            New password
+                            <span>
+                                <a href="#" class="sinfo" tooltip-placement="top" tooltip="Password must have atleast one upperCase, lowercase, number and a special character,minlength 6"><i class="fa fa-info"></i></a>
+                            </span>
+                        </label>
+                        <input type="password" id="newPassword" name="New password" class="k-textbox w100p mand" placeholder="New password" ng-blur="newpasswordFun()" ng-model="newPassword" data-validationtype="required">
+                    </div>
+                    <div class="form-group col-md-12 logtop-25p mt-15">
+                        <label>Confirm password</label>
+                        <input type="password" id="confirmPassword" name="Confirm password" class="k-textbox w100p mand" ng-blur="confirmPasswordFun()" placeholder="Confirm password" ng-model="confirmPassword" data-validationtype="required">
+                    </div>
+                </div>
+                <div class="modal-footer pt-0 pb-0 col-md-12">
+                    <button class="mui-btn mui-btn-primary mui-btn-raised" ng-disabled="progress" ng-click="ok()">Save</button>
+                    <button class="mui-btn mui-btn-default mui-btn-raised btn-ef-4 btn-ef-4c" ng-click="cancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>

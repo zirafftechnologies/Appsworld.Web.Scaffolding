@@ -1,0 +1,526 @@
+﻿
+<section class="container-liquid" ng-controller="companydetails as vm">
+  
+    <section class="row clearfix">
+        <section class="col-md-12 column sucompany">
+            <section class="col-xs-12 col-sm-12 col-md-9" id="leftsidebar">
+                <div z-loader></div>
+                <section class="tile" fullscreen="isFullscreen02">
+                    <div class="acc-form">
+                        <form name="form1" id="form1" form-validate ng-submit="getCommunication();vm.validate($event)" class="k-content row form-validation" role="form">
+
+                            <div class="tile-header dvd dvd-btm pt-0 pb-0">
+                                <h2 class="custom-font">
+                                    <!--<img src="../../content/images/icons/building.png" class="mtm-5" width="36" height="36" />-->
+                                    <span class="orga"></span>Company
+                                </h2>
+                            </div>
+                            <div class="col-md-12 mb-5" id="validationDiv" ng-show="vm.isValidationRequired">
+                                <div class="alert alert-danger alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-hidden="true" hidden>
+                                        &times;
+                                    </button>
+                                    <div ng-repeat="valText in vm.validationMessages">
+                                        <i class="fa fa-exclamation-circle"></i>&nbsp;{{valText.validationText}}
+                                        <span style="padding-right:80px"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="companyDetails">
+                                <div class="row">
+                                    <br />
+
+                                    <!--<div ng-show="vm.isAdmin" class="demo-section k-content col-md-2 col-sm-2 col-xs-12 up-button maincompany">
+
+                    <input name="files" type="file" id="upload" />
+
+                    <div class="cimg" id="img">
+                    </div>
+
+                    <div class="box-col" id="fileDiv">
+                        <label>&nbsp;</label>
+                    </div>
+                    <label id="invalid" class="" style="color:red;"><i class="fa fa-exclamation-circle"></i>&nbsp;Please Upload .PNG , .JPG , .JPEG Files Only </label>
+                </div>-->
+
+                                    <div ng-show="vm.isAdmin" class="demo-section k-content col-md-2 col-sm-2 col-xs-6">
+
+                                        <div class="profile_intro_hover">
+
+                                            <p style="text-align:center;">
+                                                <div class="cimg" id="img">
+                                                </div>
+                                                <!-- <img src="Content/images/iconsnew/userprofile.png" class="img-responsive" alt="">-->
+                                            </p>
+                                            <div class="caption">
+                                                <!--<div class="blur"></div>-->
+                                                <div class="caption-text pbtn">
+                                                    <!--<button name="files" type="file" id="upload" class="mui-btn mui-btn-primary mui-btn-raised">Upload photo</button>-->
+                                                    <input name="files" type="file" id="upload" class="mui-btn mui-btn-primary mui-btn-raised" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="box-col" id="fileDiv">
+                                            <label>&nbsp;</label>
+                                        </div>
+                                        <label id="invalid" class="" style="color:red;"><i class="fa fa-exclamation-circle"></i>&nbsp;Please Upload .PNG , .JPG , .JPEG Files Only </label>
+                                    </div>
+                                    <div class="demo-section k-content form-group {{vm.nameclass}} col-sm-10 col-xs-12">
+                                        <div class="box-col">
+                                            <label>Company Name </label><br />
+                                            <input name="CompanyName" type="text" id="companyname" data-validationtype="required" ng-model="vm.companyObj.Name" maxlength="{{vm.nameLength}}" class=" k-textbox w100p mand" placeholder="Company Name" />
+                                        </div>
+                                    </div>
+                                    <div ng-show="vm.isAdmin" class="col-md-10 col-sm-10 col-xs-12 pl-0 pr-0">
+                                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                            <div class="box-col">
+                                                <label>Short Name</label><br />
+                                                <input name="ShortName" type="text" data-validationtype="{{vm.shrRequired}}" ng-model="vm.companyObj.ShortName" maxlength="5" id="shortname" class=" k-textbox w100p mand" placeholder="Short Name" />
+                                            </div>
+                                        </div>
+                                        <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                            <div class="box-col">
+                                                <label>Registration No</label><br />
+                                                <input name="RegistrationNo" type="text" data-validationtype="{{vm.regRequired}}" ng-model="vm.companyObj.RegistrationNo" maxlength="20" id="registrationno" class=" k-textbox w100p" placeholder="Registration No" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="!vm.isAdmin" class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12 auto userexpire">
+                                        <!--<div class="input-group box-col">
+                        <label>Expiry Date</label><br />
+                        <input type="text"
+                               placeholder="DD/MM/YYYY"
+                               name="Expiry Date"
+                               id="ExpiryDate"
+                               show-button-bar="false"
+                               class="form-control k-textbox"
+                               datepicker-popup="dd/MM/yyyy"
+                               ng-model="vm.companyObj.ExpiryDate"
+                               is-open="opened"
+                               ng-required="true"
+                               datepicker-options="vm.dateOptions"
+                               close-on-date-selection="true"
+                               close-text="Close" />
+                        <span class="input-group-btn">
+                            <br />
+                            <button type="button" class="btn btn-default" ng-checked="vm.lockdate()" ><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>-->
+                                        <label>Expiry Date</label>
+                                        <div class="input-group">
+                                            <input type="text" show-button-bar="false" data-validationtype="date,newdatecompare" data-format="DD/MM/YYYY" placeholder="DD/MM/YYYY" name="Expiry Date" id="ExpiryDate" class="form-control k-textbox" datepicker-popup="{{format6}}" ng-model="vm.companyObj.ExpiryDate" is-open="opened1" datepicker-options="dateOptions6" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default p-8-15" ng-click="open($event,'opened1')" ng-disabled="vm.isView"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                            <!--<span class="input-group-btn">
+                        <button type="button" class="btn btn-default p-8-15" ng-click="open($event,'opened1')"><i class="fa fa-calendar"></i></button>
+                                            </span>-->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <communication json-string="vm.jsonString" ng-model="vm.companyObj.Communication" is-view="vm.isView"></communication>
+                                <address-module address-objects="vm.companyObj.Addresses" is-view="vm.isView" ng-model="vm.companyObj.Addresses" ad-id="vm.adId" ad-type="'company'"></address-module>
+                                <!--<z-book address-type="vm.addressType" address-object="vm.addressObject" is-view="vm.isView" titles="vm.addrTitle"></z-book>-->
+
+                                <div class="row" hidden>
+                                    <br>
+                                    <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="box-col">
+                                            <label for="Username/Email2" class="required">Username/Email</label>
+                                            <input type="text" name="UsernameEmail2" ng-model="vm.companyObj.UserName" class="k-textbox w100p mand" placeholder="Username/Email" ng-disabled="vm.isEdit" />
+                                        </div>
+                                    </div>
+                                    <div class="demo-section k-content form-group col-md-6 col-sm-6 col-xs-12" ng-show="vm.isEdit">
+                                        <div class="box-col">
+                                            <label>&nbsp;</label>
+                                            <input type="button" id="btnResetPassword" name="resetPassword" ng-click="vm.resetPassword()" class="k-button w100p " value="Click To Reset Password" />
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="userCreation" ng-show="vm.isCreateUser">
+                                <div ng-show="!vm.isAdmin">
+                                    <div class="col-md-12 tile-header dvd dvd-btm">
+                                        <h3 class="custom-font">User Information</h3>
+
+                                    </div>
+                                    <div style="background-color:lightgray" id="userDetails">
+                                        <!--<div class="col-md-12" id="validationDiv1" ng-show="vm.isUserValidationRequired">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true" hidden>
+                                &times;
+                            </button>
+                            <div >
+                                <i class="fa fa-exclamation-circle"></i>&nbsp;Invalid data, Please Verify !
+                                <span style="padding-right:80px"></span>
+                            </div>
+                        </div>
+                    </div>-->
+                                        <div class="row mt-10">
+
+                                            <div class="demo-section col-md-6 col-sm-6 col-xs-12 auto">
+                                                <label for="FirstName" class="required">Name</label>
+                                                <div class="form-group">
+                                                    <div class="input-group w100p">
+                                                        <div class="input-group-btn mw30p">
+
+                                                            <select kendo-drop-down-list
+                                                                    k-data-source="vm.companyObj.SalutationLU.Lookups"
+                                                                    k-data-text-field="'Name'"
+                                                                    k-data-value-field="'Code'"
+                                                                    k-option-label="'Select Option'" class="form-control" ng-model="vm.userDetails.Salutation" id="" name="Category" ng-disabled="vm.isUserView"></select>
+                                                        </div>
+                                                        <input type="text" id="firstName" data-validationtype="required" name="Name" ng-model="vm.userDetails.FirstName" class="k-textbox w100p mand" placeholder="Name" ng-disabled="vm.isUserView" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--<div class="demo-section  form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class="box-col">
+                                <label for="FirstName" class="required">Name</label>
+                                <input type="text" id="firstName" data-validationType="required" name="Name" ng-model="vm.userDetails.FirstName" class="k-textbox w100p mand" placeholder="Name" />
+                            </div>
+                        </div>-->
+                                            <div class="demo-section  form-group col-md-6 col-sm-6 col-xs-12" hidden>
+                                                <div class="box-col">
+                                                    <label for="LastName" class="required">Last Name</label>
+                                                    <input type="text" id="lastName" name="lastName" ng-model="vm.userDetails.LastName" ng-disabled="vm.isUsernameDisable" class="k-textbox w100p mand" placeholder="Last Name" />
+                                                </div>
+                                            </div>
+                                            <div class="demo-section form-group col-md-6 col-sm-6 col-xs-12">
+                                                <div class="box-col">
+                                                    <label for="Username/Email" class="required">User Name/Email</label>
+                                                    <input type="text" id="userName" data-validationtype="required,email" name="UserName/Email" ng-model="vm.userDetails.Username" ng-disabled="vm.isUsernameDisable" class="k-textbox w100p mand" placeholder="User Name/Email" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-10">
+                                            <label for="Remarks" class="required">Remarks</label>
+                                            <textarea class="k-textbox w100p" ng-model="vm.userDetails.Remarks" rows="5" ng-disabled="vm.isUserView"></textarea>
+                                            <br />
+                                        </div>
+                                        <div class="row">
+                                        </div>
+                                        <div class="tile-footer com-tile">
+                                            <div class="row col-md-12" style="background-color:lightgray">
+
+                                                <div class="pull-right">
+                                                    <a href="" class="mui-btn mui-btn-primary mui-btn-raised bg-green" ng-click="vm.saveUser()" ng-show="!vm.isUserView">Save</a>
+                                                    <!--<a href="" class="mui-btn mui-btn-default mui-btn-raised orc" ng-click="vm.deleteUser()" ng-show="vm.isUserEdit&&vm.userSelection[0].Id<0">Delete</a>-->
+                                                    <button id="btnCancel" type="button" class="mui-btn mui-btn-default mui-btn-raised" ng-click="vm.cancelUser()">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div ng-show="!vm.isAdmin" class="mt-10 companyuserinfo">
+                                <div class="tile-header dvd dvd-btm formtop" id="acc-icon">
+                                    <h3 class="custom-font">
+                                        Users Information
+                                    </h3>
+                                    <span style="color: #8e8e8e;background-color:#fdefba;border: 1px solid #fbefba;padding: 3px;" ng-if="vm.showInvalidUsers"><i class="fa fa-exclamation-circle"></i>&nbsp;{{vm.invalidUserText}}</span>
+                                    <ul class="controls hidden-xs hidden-sm" ng-hide="vm.isView">
+                                        <li><a href="" tooltip-placement="top" tooltip="Add" tile-control ng-click="vm.createUser()"><i class="fa fa-plus"></i></a></li>
+                                        <li><a href="" tile-control class="" tooltip-placement="top" ng-show="vm.companyObj.CompanyUsers.length!=0" tooltip="Edit" ng-click="vm.editUser()"><i class="fa fa-pencil"></i></a></li>
+                                        <li ng-show="vm.userSelection[0].Id<0&&vm.companyObj.CompanyUsers.length!=0"><a href="" tile-control tooltip-placement="top" tooltip="Delete" class="" ng-click="vm.deleteUser()"><i class="fa fa-trash"></i></a></li>
+                                        <li ng-hide="vm.userSelection[0].Id<0||vm.companyObj.CompanyUsers.length==0"><a href="" tile-control tooltip-placement="top" tooltip="Reset" class="" ng-click="vm.resetUser()"><i class="fa fa-lock "></i></a></li>
+                                        <li ng-hide="vm.userSelection[0].Id<0||vm.companyObj.CompanyUsers.length==0"><a href="" tile-control class="" tooltip-placement="top" tooltip="Active/Inactive" ng-click="vm.disableUser()"><i class="fa fa-ban"></i></a></li>
+                                    </ul>
+                                </div>
+                                <kendo-grid id="usersGrid" k-options="vm.companyUsers"></kendo-grid>
+                            </div>
+                            <div class="mt-rr k-content form-group role-cb" ng-show="!vm.isAdmin">
+
+                                <div class="">
+                                    <div class="tile-header dvd dvd-btm">
+                                        <h3 class="custom-font">Cursors Offering</h3>
+                                        <span style="color: #8e8e8e;background-color:#fdefba;border: 1px solid #fbefba;padding: 3px;" ng-if="vm.showInvalidCursors"><i class="fa fa-exclamation-circle"></i>&nbsp;Please Select at least one cursor</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="demo-section k-content col-md-6 " ng-repeat="row in vm.companyObj.ModulesCompact">
+                                            <label class="col-md-12">
+                                                <!--<input type="checkbox" class="k-checkbox rme" id="{{row.Name}}" ng-model="row.Status" name="fc5" ng-checked="row.Status" ng-disabled="row.Name=='Admin Cursor'" ng-click="vm.toggleSelection(row.Name)" />
+                            <label for="{{row.Name}}" class="k-checkbox-label  pull-left mt-10">{{row.Name}}</label>-->
+                                                <label class="checkbox checkbox-custom-alt">
+                                                    <input type="checkbox" id="{{row.Name}}" ng-checked="row.Status" ng-click="vm.toggleSelection(row.Name)" ng-disabled="row.Name=='Admin Cursor'" ng-model="row.Status" class="k-checkbox-label  pull-left mt-10" /><i></i> {{row.Name}}
+                                                </label>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="" hidden>
+                                    <div class="tile-header dvd dvd-btm">
+                                        <h3 class="custom-font">Services Offering</h3>
+                                    </div>
+                                    <div class="row">
+                                        <br />
+                                        <div class="demo-section k-content form-group  col-md-6" ng-repeat="row in vm.services">
+                                            <label class="checkbox checkbox-custom-alt">
+                                                <input type="checkbox" id="{{row.Name}}" ng-checked="vm.serviceSelection.indexOf(row.Name) > -1" ng-click="vm.toggleServiceSelection(row.Name)" /><i></i> {{row.Name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div ng-show="vm.isEdit">
+                                    <div class="col-md-12 tile-header dvd dvd-btm">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="record-history">{{vm.companyObj.UserCreated}} created this on {{vm.companyObj.CreatedDate|clientZoneDateTimeFormat}}</div>
+                                    </div>
+                                    <div class="col-md-6" ng-show="vm.companyObj.ModifiedDate">
+                                        <div class="record-history">{{vm.companyObj.ModifiedBy}} modified this on {{vm.companyObj.ModifiedDate|clientZoneDateTimeFormat}}</div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-md-12 f-rr">
+                                    <label class="checkbox checkbox-custom-alt pull-left" ng-hide="true">
+                                        <input type="checkbox" id="chkStatus" data-ng-model="vm.companyObj.Status"><i></i>Inactive
+                                    </label>
+                                    <div class="pull-right">
+                                        <button id="btnSave" type="submit" class="mui-btn mui-btn-primary mui-btn-raised" ng-hide="vm.isView||vm.isCreateUser" ng-click="getCommunication();vm.saveCompany('save')">Save</button>
+                                        <button type="submit" class="mui-btn mui-btn-primary mui-btn-raised orc" ng-click="getCommunication();vm.saveCompany('new')" ng-hide="vm.isEdit||vm.isCreateUser">Save & New</button>
+                                        <button id="btnCancel" ng-hide="vm.isCreateUser" type="button" class="mui-btn mui-btn-default mui-btn-raised" ng-click="vm.cancelCompany()">Cancel</button>
+                                    </div>
+                                </div>
+                                <!--</section>-->
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </section>
+            </section>
+
+            <aside class="col-xs-12 col-sm-12 col-md-3 widgets widget-chat pull-right" id="rightsidebar">
+                <!-- tile -->
+                <section class="tile widget-chat" fullscreen="isFullscreen09">
+
+                    <!-- tile header -->
+                    <div class="tile-header dvd dvd-btm">
+                        <h2 class="custom-font">Notes</h2>
+
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile footer -->
+                    <div class="tile-footer">
+                        <div class="chat-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Type your message here">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-chevron-right"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile footer -->
+                    <!-- tile body -->
+                    <div class="tile-body" slimscroll="{height: '100%'}">
+
+                        <ul class="chats p-0">
+                            <li class="in">
+                                <div class="media">
+                                    <div class="pull-left thumb thumb-sm">
+                                        <img class="media-object img-circle" src="content/images/random-avatar2.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="media-heading"><a href="#" class="name">John Douey </a><span class="datetime">at 12.10.2014</span></p>
+                                        <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="out">
+                                <div class="media">
+                                    <div class="pull-right thumb thumb-sm">
+                                        <img class="media-object img-circle" src="content/images/random-avatar1.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">2 hours ago</span></p>
+                                        <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="in">
+                                <div class="media">
+                                    <div class="pull-left thumb thumb-sm">
+                                        <img class="media-object img-circle" src="content/images/random-avatar2.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="media-heading"><a href="#" class="name">John Douey </a><span class="datetime">2 hours ago</span></p>
+                                        <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="out">
+                                <div class="media">
+                                    <div class="pull-right thumb thumb-sm">
+                                        <img class="media-object img-circle" src="content/images/random-avatar1.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">1 hours ago</span></p>
+                                        <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="in">
+                                <div class="media">
+                                    <div class="pull-left thumb thumb-sm">
+                                        <img class="media-object img-circle" src="content/images/random-avatar2.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="media-heading"><a href="#" class="name">John Douey </a><span class="datetime">53 minutes ago</span></p>
+                                        <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="out">
+                                <div class="media">
+                                    <div class="pull-right thumb thumb-sm">
+                                        <img class="media-object img-circle" src="content/images/random-avatar1.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">40 minutes ago</span></p>
+                                        <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- /tile body -->
+
+
+                </section>
+                <!-- /tile -->
+
+
+                <section class="tile tile-simple">
+                    <div class="tile-header tile-widget dvd dvd-btm">
+                        <h2 class="custom-font "><i class="fa fa-file mr-5"></i>Documents</h2>
+                        <ul class="controls hide">
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+
+                                <a href tile-control-toggle>
+                                    <span class="minimize"><i class="fa fa-angle-up fa-2x"></i>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                    <span class="expand"><i class="fa fa-angle-down fa-2x"></i>&nbsp;&nbsp;&nbsp;Expand</span>
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+
+                    <div class="tile-body p-0 docs">
+
+                        <ul class="list-group no-radius no-border">
+                            <li class="list-group-item">
+                                <!--<span class="badge">654</span>-->
+                                <a href="#" class="">
+                                    <i class="fa fa-file-pdf-o text-muted mr-5"></i> project_report.pdf
+                                </a>
+                                <div class="pull-right doc-actions">
+                                    <a href="#" class="" style="width:30px;"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <!--<span class="badge bg-info">364</span>-->
+                                <a href="#" class="">
+                                    <i class="fa fa-file-word-o text-muted mr-5"></i> sales_thesis.docx
+                                </a>
+                                <div class="pull-right doc-actions">
+                                    <a href="#" class="" style="width:30px;"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <!--<span class="badge bg-success">12</span>-->
+                                <a href="#" class="">
+                                    <i class="fa fa-file-excel-o text-muted mr-5"></i> sales_report.xlsx
+                                </a>
+                                <div class="pull-right doc-actions">
+                                    <a href="#" class="" style="width:30px;"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <!--<span class="badge bg-cyan">54</span>-->
+                                <a href="#" class="">
+                                    <i class="fa fa-file-archive-o text-muted mr-5"></i> event.rar
+                                </a>
+                                <div class="pull-right doc-actions">
+                                    <a href="#" class="" style="width:30px;"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <!--<span class="badge bg-warning">19</span>-->
+                                <a href="#" class="">
+                                    <i class="fa fa-file-image-o text-muted mr-5"></i> customer.jpeg
+                                </a>
+                                <div class="pull-right doc-actions">
+                                    <a href="#" class="" style="width:30px;"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <!--<span class="badge bg-info">56</span>-->
+                                <a href="#" class="">
+                                    <i class="fa fa-file-powerpoint-o text-muted mr-5"></i> sales_analytics.ppt
+                                </a>
+                                <div class="pull-right doc-actions">
+                                    <a href="#" class="" style="width:30px;"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <!--<span class="badge bg-danger">25</span>-->
+                                <a href="#" class="">
+                                    <i class="fa fa-file-zip-o text-muted mr-5"></i> project_report.zip
+                                </a>
+                                <div class="pull-right doc-actions">
+                                    <a href="#" class="" style="width:30px;"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+
+            </aside>
+
+        </section>
+    </section>
+</section>
+
+<style>
+    .checkbox-grid li {
+        display: block;
+        float: left;
+        width: 40%;
+    }
+    .container5 {
+        /*border: 2px solid #ccc;*/
+        width: 950px;
+        /*height: 300px;*/
+        overflow-y: scroll;
+    }
+</style>

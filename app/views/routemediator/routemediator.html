@@ -1,0 +1,53 @@
+﻿
+    <div class="container" ng-controller="routeMediate as vm">
+        <section class="tile widget-chat chat-section" fullscreen="isFullscreen09">
+            <!-- tile body -->
+            <div z-loader></div>
+            <div class="tile-body" slimscroll="{height: '100%'}">
+
+                <ul class="row chats p-0 routetest">
+                    <li class="in row col-md-6" ng-class="{'not-allowed':company.Status=='Inactive'}" ng-repeat="company in  vm.companies">
+                        <div class="setCompany">
+                            <div class="media-body p-0">
+                                <div class="col-md-1 pl-0 pr-0 b1">
+                                    <span class="">{{company.companyFirstletter}}</span>
+                                </div>
+                                <div class="col-md-11 pl-0 pr-0">
+                                    <p class="media-heading row bb-1">
+                                        <a href="#" ng-class="{'pevents':company.Status=='Inactive'}" class="name" ng-click="vm.setCompany(company)">
+                                            <span class="pull-left pt-5 fs-18">
+                                                <!--<button type="submit" class="mui-btn mui-btn-primary mui-btn-raised m-0 hide">N</button>-->
+                                                <span class="pl-15">{{company.Name}}</span>
+                                            </span>
+                                            <span class="pull-right b2" ng-show="company.Status==='Inactive'">
+                                                <button type="submit" class="mui-btn mui-btn-default mui-btn-raised m-0"><i class="fa fa-ban"></i></button>
+                                            </span>
+                                            <span class="pull-right b3" ng-show="company.Status==='Active'">
+                                                <button type="submit" class="mui-btn mui-btn-default mui-btn-raised m-0"><i class="fa fa-check"></i></button>
+                                            </span>
+                                        </a>
+                                    </p>
+
+                                    <p class="pl-15 pt-5"><!--Address:--> {{company.BlockHouseNo}}</p>
+                                    <p class="pl-15" ng-if="company.Status == 'Inactive'" style="color:red">Your account has been deactivated, please contact administrator</p>
+                                </div>
+                            </div>                            
+                        </div>
+                       
+                    </li>
+                    <li ng-if="vm.isSingleCMPYIn">
+                        <div class="setCompany">
+                            <div class="media-body">
+                                <p style="color:red">Your account has been deactivated, please contact administrator</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /tile body -->
+        </section>
+    </div>
+
+
+

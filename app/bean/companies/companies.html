@@ -1,0 +1,83 @@
+﻿
+<section class="container-liquid" ng-controller="company as vm">
+    <section class="row clearfix">
+        <section class="col-md-12 column">
+            <section class="col-xs-12 col-sm-12" ng-class="{'col-md-9':vm.isAdmin}" ng-class="{'col-md-12':!vm.isAdmin}" id="leftsidebar" loading-indicator>
+                <section class="tile" fullscreen="isFullscreen02">
+                    <div class="tile-header dvd dvd-btm pt-0  mtm-5" ng-class="{'pb-0':vm.isAdmin}" id="acc-icon">
+                        <h2 class="custom-font combook">
+                            <!--<img src="../../content/images/icons/building.png" width="36" height="36" alt="Accounts" />-->
+                            <span class="orga"></span>Companies
+                            <z-bookmark class="zb" entityname="'Companies'" ng-show="vm.isAdmin"></z-bookmark>
+                        </h2>
+                        <div ng-if="vm.isDisableValReq" class="pull-right">
+                            <span style="color: #8e8e8e; background-color: #fdefba; border: 1px solid #fbefba; padding: 3px; position: absolute; left: 354px; bottom: 7px; " ><i class="fa fa-exclamation-circle"></i>&nbsp; Company activation is not allowed at this level. Please goto edit company </span>
+                        </div>
+                        <ul class="controls hidden-xs hidden-sm" style="margin-top:15px !important;">
+                            <!--<li class="search input-group" id="main-search">
+                        <input id="lblAccountSearch" ng-model="vm.accountSearch" placeholder="Search" class="form-control underline-input" type="search" />
+                    </li>
+                    <li class="searchover">
+                        <a id="HlkAccountSearch" href ng-click="vm.search()"><i class="fa fa-search"></i></a>
+                    </li>-->
+                            <!--<li>
+                        <a date-range-picker ng-change="vm.action()" ng-controller="DateRangePickerCtrl" value="Select Ranges" options="dateRangeOption" class="form-control calendar Button" ng-model="vm.date">
+                            <i class="fa fa-calendar"></i>  <span>{{vm.date.startDate|date:'MMMM dd, yy'}} - {{vm.date.endDate|date:'MMMM dd, yy'}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                        </a>
+                    </li>-->
+                            <li><a id="HlkAccountSearch" ng-click="vm.clearFilters()" tooltip-placement="top" tooltip="Clear Filters"><i class="fa fa-filter"></i></a></li>
+                            <li class=""><a ui-sref="app.company_addEdit({id:'new',isView:'false'})" tooltip-placement="top" tooltip="Add" tile-control><i class="fa fa-plus"></i></a></li>
+                            <li id="editbtn" class=""><a href="" tile-control tooltip-placement="top" tooltip="Edit" class="" ng-click="vm.editCompany()"><i class="fa fa-pencil "></i></a></li>
+                            <li class="{{vm.ed}}"><a href="" tile-control tooltip-placement="top" tooltip="Active/Inactive" ng-click="vm.disableCompany()"><i class="fa fa-ban"></i></a></li>
+                            <li>
+                                <a tooltip-placement="top" tooltip="Refresh" href tile-control ng-click="vm.refresh()">
+                                    <fa name="refresh"></fa>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                        <ul class="controls visible-xs visible-sm">
+
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+
+                                <a href dropdown-toggle class="dropdown-toggle settings">&bull;&bull;&bull;</a>
+
+                                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+
+                                    <li><a id="HlkAccountSearch" ng-click="vm.clearFilters()"><i class="fa fa-filter"></i>Clear Filters</a></li>
+                                    <li class=""><a ui-sref="app.company_addEdit({id:'new',isView:'false'})" tile-control><i class="fa fa-plus"></i>Add</a></li>
+                                    <li class=""><a href="" tile-control ng-click="vm.editCompany()"><i class="fa fa-pencil "></i>Edit</a></li>
+                                    <li class="{{vm.ed}}"><a href="" tile-control ng-click="vm.deleteCompany()"><i class="fa fa-trash"></i>Active/Inactive</a></li>
+                                    <li>
+                                        <a href tile-control ng-click="vm.refresh()">
+                                            <fa name="refresh"></fa> Refresh
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+
+                </section>
+
+                <div class="tile-body">
+                    <kendo-grid id="companyGrid" options="vm.companies"></kendo-grid>
+                </div>
+            </section>
+
+            <!--<aside class="col-md-3 widgets pull-right" id="rightsidebar">
+                <z-activities></z-activities>
+            </aside>-->
+            <aside class="col-md-3 col-xs-12 col-sm-12 pl-0 pr-0 widgets pull-right" ng-show="vm.directive">
+                <z-admincursor></z-admincursor>
+            </aside>
+        </section>
+    </section>
+</section>
